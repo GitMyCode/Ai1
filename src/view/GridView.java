@@ -3,11 +3,13 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Created by Martin on 2/25/14.
  */
-public class GridView extends JPanel{
+public class GridView extends JPanel implements Observer{
 
     public SquareView[] cases;
 
@@ -29,5 +31,16 @@ public class GridView extends JPanel{
         }
     }
 
+    private void changeSquare(int index, int player){
+        cases[index].setState(player);
 
+
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        int[] args = (int[]) arg; // arg[0] = index et arg[1] = state
+        cases[args[0]].setState(args[1]);
+        System.out.println("ici " +args[1] +"et "+ args[0] );
+    }
 }

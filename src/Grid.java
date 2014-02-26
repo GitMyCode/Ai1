@@ -1,10 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Observable;
 
 /**
  * Created by Martin on 2/25/14.
  */
-public class Grid {
+public class Grid extends Observable {
 
     public Integer[] cases;
 
@@ -17,14 +18,26 @@ public class Grid {
         }
     }
     public Grid(Grid g){
-        cases = new Integer[9];
-        for (int i=0; i<9; i++){
+        cases = new Integer[g.cases.length];
+        for (int i=0; i<g.cases.length; i++){
             cases[i] = g.cases[i];
         }
     }
 
+    public void setCases(int index,int player){
+        cases[index] = player;
+
+        int envoi[] = new int[2];
+        envoi[0] = index; envoi[1]= player;
+        setChanged();
+        notifyObservers( envoi);
+    }
+    public boolean checkValid(int index){
+        return (cases[index] ==0);
+    }
     public void show(){
-        for (int i =0; i<9; i++){
+        for (int i =0; i< cases.length; i++){
+
             System.out.print(cases[i] + " ");
         }
         System.out.println("");

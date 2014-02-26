@@ -12,11 +12,18 @@ public class Game implements ActionListener{
     Grid grid;
     GridView gridV;
 
-    public Game(Grid grid, GridView gridV){
+    Human human;
+    Ai ai;
+
+    public Game(Grid grid, GridView gridV,Human p1,Ai p2){
 
         this.grid = grid;
         this.gridV= gridV;
+        human = p1;
+        ai = p2;
 
+        human.turn = true;
+        ai.turn = false;
     }
 
     @Override
@@ -24,9 +31,25 @@ public class Game implements ActionListener{
 
         for(int i =0; i<9 ; i++){
             if(gridV.cases[i] == e.getSource()){
-                System.out.println(i);
+
+                if (grid.checkValid(i)){
+                    System.out.println(i);
+                   // Player current = getCurrentPlayer();
+                    human.play(i);
+                    ai.play(i);
+                   // switchTrun();
+                }
             }
         }
+    }
+
+
+    private Player getCurrentPlayer(){
+        return (ai.turn)? ai: human;
+    }
+    private void switchTrun(){
+        ai.turn = !ai.turn;
+        human.turn = !human.turn;
     }
 
 /*

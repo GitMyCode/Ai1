@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * Created by Martin on 2/25/14.
  */
-public class Ai1 {
+public class TicTacToe {
 
 
     public static void  main(String[] args){
@@ -24,11 +24,17 @@ public class Ai1 {
 
         Grid grid = new Grid();
         GridView gridV = new GridView();
+        grid.addObserver(gridV);
 
         frame.add(gridV);
 
-        Game game = new Game(grid,gridV);
+
+        Human p1 = new Human(grid,1);
+        Ai p2 = new Ai(grid,2);
+        Game game = new Game(grid,gridV,p1,p2);
         gridV.addAction(game);
+
+
 
         frame.setVisible(true);
 
@@ -40,30 +46,31 @@ public class Ai1 {
         System.out.println("0 -- le Ai commence\\n1 le joueur commence");
         int ordre = reader.nextInt();
 */
-
         Noeud arbre = new Noeud(1, grid );
-
-
-
        getPos(arbre, grid, 1);
-
-        for(int i =0; i<3 ;i++){
+    /*    for(int i =0; i<9 ;i++){
            arbre.fils[i].grid.show();
-        }
+
+        }*/
     }
 
-    public static void getPos(Noeud racine, Grid grid, int coup){
-        coup = coup==1 ? 2 : 1;
-        for(int i =0; i< 9 ; i++){
+    public static void getPos(Noeud racine, Grid grid, int joueur){
+        joueur = joueur==1 ? 2 : 1;
+        for(int i =0; i< grid.cases.length ; i++){
             if (grid.cases[i] == 0){
                 Grid newGrid = new Grid(grid);
-                newGrid.cases[i] = coup;
+                newGrid.cases[i] = joueur;
+
                 racine.fils[i] = new Noeud(i, newGrid);
-                getPos(racine.fils[i], newGrid, coup);
+                getPos(racine.fils[i], newGrid, joueur);
 
             }
         }
 
     }
+
+
+
+
 
 }

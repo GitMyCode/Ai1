@@ -4,15 +4,18 @@
 public abstract class Player {
 
     Grid grid;
-
-    public Player(Grid grid){
+    int player;
+    boolean turn =false;
+    public Player(Grid grid,int player){
         this.grid = grid;
+        this.player = player;
+
 
     }
 
     public void play(int index){
 
-        checkLose();
+
 
     }
 
@@ -43,11 +46,6 @@ public abstract class Player {
 
         }
         return ret;
-    }
-
-    public void algo(){
-
-
     }
 
 

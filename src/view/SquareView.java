@@ -13,14 +13,18 @@ public class SquareView extends JButton {
     }
 
     public void setState(int state){
-        if(this.state!= 0){
+        if(this.state == 0){
             this.state =state;
-            switch (state){
-                case 1: setText("X");
+            switch (this.state){
+                case 1:
+                    setText("X");
                     break;
-                case 2: setText("0");
+                case 2:
+                    setText("0");
                     break;
-                case 0: setText("");
+                case 0:
+                    setText("");
+                    break;
             }
         }
     }

@@ -8,12 +8,11 @@ public class Noeud {
     Noeud parent;
     Noeud[] fils;
     Grid grid;
-    int coup;
+    int coupJouer;
 
-    public Noeud(int coup, Grid grid){
+    public Noeud(int coupJouer, Grid grid){
         this.grid = grid;
-        this.coup = coup;
+        this.coupJouer = coupJouer;
         fils = new Noeud[10];
-
     }
 }
