@@ -37,10 +37,21 @@ public class Grid extends Observable {
     }
     public void show(){
         for (int i =0; i< cases.length; i++){
-
+            if(i%3==0)
+                System.out.print("\n");
             System.out.print(cases[i] + " ");
+
         }
         System.out.println("");
+    }
+    public boolean isFull(){
+        boolean full= true;
+        for(int i=0; i<cases.length && full;i++){
+            full = !(cases[i] ==0) ;
+        }
+
+
+        return full;
     }
 
     public static boolean verifierVictoire(Case[] cases) {
