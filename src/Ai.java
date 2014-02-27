@@ -46,11 +46,13 @@ public class Ai extends Player {
         }
 */
         int score= (evaluer(grid1));
-        if(score != 0 || grid1.isFull()){
+        if(score != 0 || grid1.isFull() || depth == 0){
             System.out.print("-------------" +
                     "\n" + score);
             grid1.show();
-            return new int[] {0,score } ;
+            int test =0;
+            test = (score >0) ? depth : (test -depth);
+            return new int[] {0,score +depth } ;
         }
 
 
@@ -70,13 +72,20 @@ public class Ai extends Player {
                     if(currentScore > alpha){
                         alpha = currentScore;
                         bestMove = move;
+
+                        for(int i=0;i<depth;i++){
+                            System.out.print("  ");
+                        }
                         System.out.println("                      AI:"+ move);
                     }
                 }else {
                     currentScore = minmax(newGrid,depth-1,2,alpha,beta)[1];
                     if(currentScore < beta){
                         beta = currentScore;
-                      //  bestMove = move;
+                        bestMove = move;
+                        for(int i=0;i<depth;i++){
+                            System.out.print("  ");
+                        }
                         System.out.println("                      P:"+ move);
                     }
 
