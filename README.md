@@ -7,7 +7,7 @@ L'algorithme implémenter est MinMax
 
 
 
-[!Alt text](https://dl.dropboxusercontent.com/u/14828537/TicTacToe.gif)
+![Alt text](https://dl.dropboxusercontent.com/u/14828537/TicTacToe.gif)
 
 
 
