@@ -3,7 +3,7 @@ Ai1
 
 
 Intelligence Artificielle d'un Tic-tac-toe
-L'algorithme implémenter est MinMax
+L'algorithme implémenté est MinMax
 
 
 
